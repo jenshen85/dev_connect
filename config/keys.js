@@ -1,5 +1,6 @@
 const URI = require('./config-creator')();
 
 module.exports = {
-  mongoURI: URI
+  mongoURI: URI,
+  secretOrKey: 'secretKey',
 }
