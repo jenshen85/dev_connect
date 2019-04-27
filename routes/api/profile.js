@@ -16,7 +16,7 @@ router.get('/test', (req, res) => {
 });
 
 // @route GET api/profile
-// @desc Get current user profile
+// @desc Get current User Profile
 // @access Private
 router.get(
   '/',
@@ -35,6 +35,44 @@ router.get(
         return res.json(profile);
       })
       .catch((err) => res.status(404).json(err))
+  })
+
+// @route POST api/profile
+// @desc Create orUpdate User Profile
+// @access Private
+router.post(
+  '/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    // get fields
+    const profileFields = {}
+
+    profileFields.user = req.user.id
+    if(req.body.handle) profileFields.handle = req.body.handle;
+    if(req.body.company) profileFields.company = req.body.company;
+    if(req.body.website) profileFields.website = req.body.website;
+    if(req.body.location) profileFields.location = req.body.location;
+    if(req.body.status) profileFields.status = req.body.status;
+    if(req.body.bio) profileFields.bio = req.body.bio;
+    if(req.body.githubusername) profileFields.githubusername = req.body.githubusername;
+
+    // Skills split into array
+    if(typeof req.body.skills !== 'undefined') {
+      profileFields.skills = req.body.skills.split(',');
+    }
+
+    // Social
+    profileFields.social = {}
+    if(req.body.youtube) profileFields.social.youtube = req.body.youtube;
+    if(req.body.twitter) profileFields.social.twitter = req.body.twitter;
+    if(req.body.facebook) profileFields.social.facebook = req.body.facebook;
+    if(req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
+    if(req.body.instagram) profileFields.social.instagram = req.body.instagram;
+    if(req.body.vk) profileFields.social.vk = req.body.vk;
+
+    if(req.body.handle) profileFields.handle = req.body.handle;
+    if(req.body.handle) profileFields.handle = req.body.handle;
+    if(req.body.handle) profileFields.handle = req.body.handle;
   })
 
 module.exports = router;
