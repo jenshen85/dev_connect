@@ -8,6 +8,8 @@ const Profile = require('../../models/Profile');
 // Load User Model
 const User = require('../../models/User');
 
+const validateProfileInput = require('../../validation/profile');
+
 // @route GET api/profile/test
 // @desc Test profile router
 // @access Public
@@ -26,6 +28,7 @@ router.get(
 
     Profile
       .findOne({user: req.user.id})
+      .populate('user', ['name', 'avatar'])
       .then((profile) => {
         if(!profile) {
           errors.noprofile = 'There is no profile for this user';
@@ -44,6 +47,14 @@ router.post(
   '/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+
+    const { errors, isValid } = validateProfileInput(req.body)
+
+    // Check validation
+    if(!isValid) {
+      return res.status(400).json(errors);
+    }
+
     // get fields
     const profileFields = {}
 
@@ -70,9 +81,36 @@ router.post(
     if(req.body.instagram) profileFields.social.instagram = req.body.instagram;
     if(req.body.vk) profileFields.social.vk = req.body.vk;
 
-    if(req.body.handle) profileFields.handle = req.body.handle;
-    if(req.body.handle) profileFields.handle = req.body.handle;
-    if(req.body.handle) profileFields.handle = req.body.handle;
+    Profile
+      .findOne({ user: req.user.id })
+      .then((profile) => {
+        if(profile) {
+          // Update
+          Profile.findOneAndUpdate(
+            {user: req.user.id},
+            { $set: profileFields },
+            { new: true }
+          ).then((profile) => res.json(profile));
+        } else {
+          // Create
+
+          // checkif handle exist
+          Profile
+            .findOne({handle: profileFields.handle})
+            .then((profile) => {
+              if(profile) {
+                errors.handle = 'That handle already exists';
+                res.status(400).json(errors);
+              }
+
+              // Save Profile
+              new Profile(profileFields)
+                .save()
+                .then((profile) => res.json(profile));
+            })
+        }
+      })
+      .catch((err) => console.log(err))
   })
 
 module.exports = router;
