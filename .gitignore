@@ -1,2 +1,4 @@
 node_modules
+ready
 .db_data_rc
+package-lock.json
