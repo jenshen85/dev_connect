@@ -20,7 +20,7 @@ router.get('/test', (req, res) => {
   res.json({ msg: 'Users works' });
 });
 
-// @route api/users/register
+// @route POST api/users/register
 // @desc Register users
 // @access Public
 router.post('/register', (req, res) => {
