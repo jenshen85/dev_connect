@@ -62,7 +62,7 @@ const ProfileSchema = new Schema({
       description: {
         type: String,
       },
-    }
+    },
   ],
   education: [
     {
@@ -92,7 +92,7 @@ const ProfileSchema = new Schema({
       description: {
         type: String,
       },
-    }
+    },
   ],
   social: {
     youtube: {

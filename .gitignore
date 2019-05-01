@@ -1,4 +1,6 @@
 node_modules
 ready
+.vscode
+.idea
 .db_data_rc
 package-lock.json
