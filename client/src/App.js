@@ -9,6 +9,8 @@ import { setCurrentUser, logoutUser, clearCurrentProfile } from './actions';
 
 import store from './store';
 
+import PrivateRoute from './components/common/privateRoute';
+
 import Navbar from './components/layout/navbar';
 import Footer from './components/layout/footer';
 import Landing from './components/layout/landing';
@@ -50,7 +52,7 @@ function App() {
               <Route path="/" component={Landing} exact />
               <Route path="/register" component={Register} exact />
               <Route path="/login" component={Login} exact />
-              <Route path="/dashboard" component={Dashboard} exact />
+              <PrivateRoute path="/dashboard" component={Dashboard} exact />
             </Switch>
           </main>
           <Footer />
