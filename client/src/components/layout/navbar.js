@@ -4,10 +4,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { logoutUser } from '../../actions';
+import { clearCurrentProfile } from '../../actions';
 
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
+    this.props.clearCurrentProfile();
     this.props.logoutUser();
   }
 
@@ -21,7 +23,13 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <a onClick={this.onLogoutClick.bind(this)} href="/" className="nav-link" title="loguout">
-            <img className="rounded-circle" src={user.avatar} alt={user.name} style={style} title="You must have a Gravatar conected to your email to display an image" />
+            <img
+              className="rounded-circle"
+              src={user.avatar}
+              alt={user.name}
+              style={style}
+              title="You must have a Gravatar conected to your email to display an image"
+            />
             Logout user {user.name}
           </a>
         </li>
@@ -49,7 +57,11 @@ class Navbar extends Component {
             <Link className="navbar-brand" to="/">
               DevConnector
             </Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#mobile-nav">
               <span className="navbar-toggler-icon" />
             </button>
 
@@ -72,6 +84,7 @@ class Navbar extends Component {
 
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
+  clearCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
 
@@ -81,5 +94,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { logoutUser }
+  { logoutUser, clearCurrentProfile }
 )(Navbar);
