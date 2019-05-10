@@ -118,8 +118,8 @@ class CreateProfile extends Component {
             placeholder={'Instagram Page URL'}
             icon={'fab fa-instagram'}
             type={'text'}
-            value={this.state.company}
-            error={errors.company}
+            value={this.state.instagram}
+            error={errors.instagram}
             onChange={this.onChange}
           />
         </div>
