@@ -53,19 +53,49 @@ export const addExperience = (expData, history) => (dispatch) => {
     });
 };
 
-// add experience
-export const addEducation = (eduData, history) => (dispatch) => {
+// delete experience
+export const deleteExperience = (expId) => (dispatch) => {
   axios
-    .post('/api/profile/education', eduData)
-    .then((res) => history.push('/dashboard'))
+    .delete(`/api/profile/experience/${expId}`)
+    .then((res) =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      })
+    )
     .catch((err) => {
-      console.log(err);
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
       });
     });
 };
+
+// add education
+export const addEducation = (eduData, history) => (dispatch) => {
+  axios
+    .post('/api/profile/education', eduData)
+    .then((res) => history.push('/dashboard'))
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
+
+// delete education
+// export const deleteEducation = () => (dispatch) => {
+//   axios
+//     .delete('/api/profile/experience', expData)
+//     .then((res) => history.push('/dashboard'))
+//     .catch((err) => {
+//       dispatch({
+//         type: GET_ERRORS,
+//         payload: err.response.data,
+//       });
+//     });
+// }
 
 // delete account
 export const deleteAccount = () => (dispatch) => {
