@@ -85,17 +85,22 @@ export const addEducation = (eduData, history) => (dispatch) => {
 };
 
 // delete education
-// export const deleteEducation = () => (dispatch) => {
-//   axios
-//     .delete('/api/profile/experience', expData)
-//     .then((res) => history.push('/dashboard'))
-//     .catch((err) => {
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data,
-//       });
-//     });
-// }
+export const deleteEducation = (eduId) => (dispatch) => {
+  axios
+    .delete(`/api/profile/education/${eduId}`)
+    .then((res) =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      })
+    )
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data,
+      });
+    });
+};
 
 // delete account
 export const deleteAccount = () => (dispatch) => {
