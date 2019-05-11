@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import TextFieldGroup from '../common/textFieldGroup';
@@ -143,9 +143,9 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <a href="dashboard.html" className="btn btn-light">
+              <Link to="/dashboard" className="btn btn-light">
                 Go Back
-              </a>
+              </Link>
               <h1 className="display-4 text-center">Create Your Profile</h1>
               <p className="lead text-center">
                 Let's get some information to make your profile stand out
