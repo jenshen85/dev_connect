@@ -20,7 +20,12 @@ class Navbar extends Component {
       marginRight: '10px',
     };
     const authLinks = (
-      <ul className="navbar-nav ml-auto">
+      <ul className="navbar-nav flex-column-reverse align-items-end ml-auto">
+        <li className="nav-item">
+          <Link className="nav-link" to="/dashboard">
+            Dashboard
+          </Link>
+        </li>
         <li className="nav-item">
           <a onClick={this.onLogoutClick.bind(this)} href="/" className="nav-link" title="loguout">
             <img
