@@ -10,7 +10,7 @@ export class ProfileCreds extends Component {
         <h4>{exp.company}</h4>
         <p>
           <Moment format="YYYY/MM/DD">{exp.from}</Moment> -
-          {exp.to === null ? ' Now' : <Moment format="YYYY/MM/DD">exp.to</Moment>}
+          {exp.to === null ? ' Now' : <Moment format="YYYY/MM/DD">{exp.to}</Moment>}
         </p>
         <p>
           <strong>Position:</strong> {exp.title}
@@ -32,12 +32,12 @@ export class ProfileCreds extends Component {
       </li>
     ));
 
-    const eduItems = experience.map((edu) => (
+    const eduItems = education.map((edu) => (
       <li className="list-group-item" key={edu._id}>
         <h4>{edu.school}</h4>
         <p>
           <Moment format="YYYY/MM/DD">{edu.from}</Moment> -
-          {edu.to === null ? ' Now' : <Moment format="YYYY/MM/DD">edu.to</Moment>}
+          {edu.to === null ? ' Now' : <Moment format="YYYY/MM/DD">{edu.to}</Moment>}
         </p>
         <p>
           <strong>Degree:</strong> {edu.degree}
