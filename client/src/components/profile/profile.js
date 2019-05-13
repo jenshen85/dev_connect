@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { ProfileAbout, ProfileCreds, ProfileGitHub, ProfileHeader } from './index';
@@ -15,15 +15,23 @@ export class Profile extends Component {
     }
   }
   render() {
-    const { loading } = this.props.profile;
+    const { loading, profile } = this.props.profile;
     let profileData;
 
-    if (loading) {
+    if (profile === null || loading) {
       profileData = <Spinner />;
     } else {
       profileData = (
         <Fragment>
-          <ProfileHeader />
+          <div className="row">
+            <div className="col-md-6">
+              <Link to="/profiles" className="btn btn-light mb-3 float-left">
+                Back to Profiles
+              </Link>
+            </div>
+            <div className="col-md-6" />
+          </div>
+          <ProfileHeader profile={profile} />
           <ProfileAbout />
           <ProfileCreds />
           <ProfileGitHub />
@@ -31,7 +39,15 @@ export class Profile extends Component {
       );
     }
 
-    return <div className="container">{profileData}</div>;
+    return (
+      <div className="profile">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">{profileData}</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 
