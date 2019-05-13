@@ -3,7 +3,7 @@ import {
   PROFILE_LOADING,
   // PROFILE_NOT_FOUND,
   CLEAR_CURRENT_PROFILE,
-  // GET_PROFILES,
+  GET_PROFILES,
 } from '../constants';
 // import isEmpty from '../validation/is-empty';
 
@@ -24,6 +24,12 @@ const profileReduser = (state = initialState, action) => {
       return {
         ...state,
         profile: action.payload,
+        loading: false,
+      };
+    case GET_PROFILES:
+      return {
+        ...state,
+        profiles: action.payload,
         loading: false,
       };
     case CLEAR_CURRENT_PROFILE:
