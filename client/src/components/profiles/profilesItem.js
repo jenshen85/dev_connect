@@ -22,7 +22,9 @@ class ProfilesItem extends Component {
               {profile.user.location}{' '}
               {isEmpty(profile.location) ? null : <span>at {profile.location}</span>}
             </p>
-            <Link to={`/profile/${profile.handle}`}>View Profile</Link>
+            <Link to={`/profile/${profile.handle}`} className="btn btn-primary">
+              View Profile
+            </Link>
           </div>
           <div className="col-md-4 d-none d-md-block">
             <h4>Skill Set</h4>
