@@ -14,6 +14,14 @@ export class Profile extends Component {
       this.props.getProfileByHandle(this.props.match.params.handle);
     }
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.profile.profileHandle === null && this.props.profile.loading) {
+      console.log(nextProps);
+      this.props.history.push('/not-found');
+    }
+  }
+
   render() {
     const { loading, profileHandle } = this.props.profile;
     let profileData;

@@ -23,6 +23,7 @@ import AddExperience from './components/add-credentials/addExperience';
 import AddEducation from './components/add-credentials/addEducation';
 import Profiles from './components/profiles/profiles';
 import Profile from './components/profile/profile';
+import NotFound from './components/not-found/notFound';
 
 // check for token
 if (localStorage.jwtToken) {
@@ -54,25 +55,19 @@ function App() {
         <div className="App">
           <Navbar />
           <main className="main">
-            <Route path="/" component={Landing} exact />
-            <Route path="/register" component={Register} exact />
-            <Route path="/login" component={Login} exact />
-            <Route path="/profiles" component={Profiles} exact />
-            <Route path="/profile/:handle" component={Profile} exact />
             <Switch>
+              <Route path="/" component={Landing} exact />
+              <Route path="/register" component={Register} exact />
+              <Route path="/login" component={Login} exact />
+              <Route path="/profiles" component={Profiles} exact />
+              <Route path="/profile/:handle" component={Profile} exact />
               <PrivateRoute path="/dashboard" component={Dashboard} exact />
-            </Switch>
-            <Switch>
               <PrivateRoute path="/create-profile" component={CreateProfile} exact />
-            </Switch>
-            <Switch>
               <PrivateRoute path="/edit-profile" component={EditProfile} exact />
-            </Switch>
-            <Switch>
               <PrivateRoute path="/add-experience" component={AddExperience} exact />
-            </Switch>
-            <Switch>
               <PrivateRoute path="/add-education" component={AddEducation} exact />
+              <Route to="/not-found" component={NotFound} exact />
+              <Route component={NotFound} />
             </Switch>
           </main>
           <Footer />

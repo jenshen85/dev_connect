@@ -58,8 +58,6 @@ class Register extends Component {
 
   render() {
     const { errors } = this.state;
-    const { user } = this.props.auth;
-    console.log(user);
 
     return (
       <div className="register">
