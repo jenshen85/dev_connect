@@ -16,14 +16,14 @@ export class ProfileCreds extends Component {
           <strong>Position:</strong> {exp.title}
         </p>
         <p>
-          {exp.location === null ? null : (
+          {exp.location === '' ? null : (
             <span>
               <strong>Location:</strong> {exp.location}
             </span>
           )}
         </p>
         <p>
-          {exp.description === null ? null : (
+          {exp.description === '' ? null : (
             <span>
               <strong>Description:</strong> {exp.description}
             </span>
@@ -37,13 +37,13 @@ export class ProfileCreds extends Component {
         <h4>{edu.school}</h4>
         <p>
           <Moment format="YYYY/MM/DD">{edu.from}</Moment> -
-          {edu.to === null ? ' Now' : <Moment format="YYYY/MM/DD">{edu.to}</Moment>}
+          {edu.to === '' ? ' Now' : <Moment format="YYYY/MM/DD">{edu.to}</Moment>}
         </p>
         <p>
           <strong>Degree:</strong> {edu.degree}
         </p>
         <p>
-          {edu.fieldofstudy === null ? null : (
+          {edu.fieldofstudy === '' ? null : (
             <span>
               <strong>Field Of Study:</strong> {edu.fieldofstudy}
             </span>
@@ -51,7 +51,7 @@ export class ProfileCreds extends Component {
         </p>
 
         <p>
-          {edu.description === null ? null : (
+          {edu.description === '' ? null : (
             <span>
               <strong>Description:</strong> {edu.description}
             </span>

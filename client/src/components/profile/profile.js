@@ -34,7 +34,7 @@ export class Profile extends Component {
           <ProfileHeader profile={profile} />
           <ProfileAbout profile={profile} />
           <ProfileCreds education={profile.education} experience={profile.experience} />
-          <ProfileGitHub />
+          {profile.githubusername ? <ProfileGitHub username={profile.githubusername} /> : null}
         </Fragment>
       );
     }
