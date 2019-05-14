@@ -1,6 +1,6 @@
 import React from 'react';
 
-//TODO: make rote for not found page
+//TODO: make route for not found page
 
 function NotFound() {
   return (

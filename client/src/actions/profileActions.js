@@ -7,6 +7,7 @@ import {
   GET_ERRORS,
   SET_CURRENT_USER,
   GET_PROFILES,
+  GET_PROFILE_BY_HANDLE,
 } from '../constants';
 
 // get current profile
@@ -149,13 +150,13 @@ export const getProfileByHandle = (handle) => (dispatch) => {
     .get(`/api/profile/handle/${handle}`)
     .then((res) => {
       dispatch({
-        type: GET_PROFILE,
+        type: GET_PROFILE_BY_HANDLE,
         payload: res.data,
       });
     })
     .catch((err) => {
       dispatch({
-        type: GET_PROFILE,
+        type: GET_PROFILE_BY_HANDLE,
         payload: null,
       });
     });

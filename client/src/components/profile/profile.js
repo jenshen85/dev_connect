@@ -15,10 +15,10 @@ export class Profile extends Component {
     }
   }
   render() {
-    const { loading, profile } = this.props.profile;
+    const { loading, profileHandle } = this.props.profile;
     let profileData;
 
-    if (profile === null || loading) {
+    if (profileHandle === null || loading) {
       profileData = <Spinner />;
     } else {
       profileData = (
@@ -31,10 +31,12 @@ export class Profile extends Component {
             </div>
             <div className="col-md-6" />
           </div>
-          <ProfileHeader profile={profile} />
-          <ProfileAbout profile={profile} />
-          <ProfileCreds education={profile.education} experience={profile.experience} />
-          {profile.githubusername ? <ProfileGitHub username={profile.githubusername} /> : null}
+          <ProfileHeader profile={profileHandle} />
+          <ProfileAbout profile={profileHandle} />
+          <ProfileCreds education={profileHandle.education} experience={profileHandle.experience} />
+          {profileHandle.githubusername ? (
+            <ProfileGitHub username={profileHandle.githubusername} />
+          ) : null}
         </Fragment>
       );
     }
