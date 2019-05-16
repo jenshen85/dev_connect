@@ -23,6 +23,7 @@ import AddExperience from './components/add-credentials/addExperience';
 import AddEducation from './components/add-credentials/addEducation';
 import Profiles from './components/profiles/profiles';
 import Profile from './components/profile/profile';
+import Posts from './components/posts/posts';
 import NotFound from './components/not-found/notFound';
 
 // check for token
@@ -66,6 +67,7 @@ function App() {
               <PrivateRoute path="/edit-profile" component={EditProfile} exact />
               <PrivateRoute path="/add-experience" component={AddExperience} exact />
               <PrivateRoute path="/add-education" component={AddEducation} exact />
+              <PrivateRoute path="/feed" component={Posts} exact />
               <Route to="/not-found" component={NotFound} exact />
               <Route component={NotFound} />
             </Switch>

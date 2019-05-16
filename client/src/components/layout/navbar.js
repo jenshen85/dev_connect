@@ -27,6 +27,11 @@ class Navbar extends Component {
           </Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/feed">
+            Post Feed
+          </Link>
+        </li>
+        <li className="nav-item">
           <button onClick={this.onLogoutClick.bind(this)} className="btn nav-link" title="loguout">
             <img
               className="rounded-circle"
