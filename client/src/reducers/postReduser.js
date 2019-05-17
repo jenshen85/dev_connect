@@ -1,4 +1,4 @@
-import { ADD_POST, POST_LOADING, GET_POSTS } from '../constants';
+import { ADD_POST, POST_LOADING, GET_POSTS, DELETE_POST } from '../constants';
 
 const initialState = {
   posts: [],
@@ -23,6 +23,11 @@ const postReduser = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== action.payload),
       };
     default:
       return state;

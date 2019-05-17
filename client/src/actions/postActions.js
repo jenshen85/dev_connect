@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_POST, GET_ERRORS, GET_POSTS, POST_LOADING } from '../constants';
+import { ADD_POST, GET_ERRORS, GET_POSTS, POST_LOADING, DELETE_POST } from '../constants';
 
 // Add post
 export const addPost = (postData) => (dispatch) => {
@@ -33,6 +33,25 @@ export const getPosts = () => (dispatch) => {
     .catch((err) =>
       dispatch({
         type: GET_POSTS,
+        payload: null,
+      })
+    );
+};
+
+// Delete posts
+export const deletePost = (PostId) => (dispatch) => {
+  dispatch(setPostLoading);
+  axios
+    .delete(`/api/posts/${PostId}`)
+    .then((res) =>
+      dispatch({
+        type: DELETE_POST,
+        payload: PostId,
+      })
+    )
+    .catch((err) =>
+      dispatch({
+        type: GET_ERRORS,
         payload: null,
       })
     );
