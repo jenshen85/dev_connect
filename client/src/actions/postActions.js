@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_POST, GET_ERRORS, GET_POSTS, POST_LOADING, DELETE_POST } from '../constants';
+import { ADD_POST, GET_ERRORS, GET_POSTS, GET_POST, POST_LOADING, DELETE_POST } from '../constants';
 
 // Add post
 export const addPost = (postData) => (dispatch) => {
@@ -33,6 +33,25 @@ export const getPosts = () => (dispatch) => {
     .catch((err) =>
       dispatch({
         type: GET_POSTS,
+        payload: null,
+      })
+    );
+};
+
+// Get post
+export const getPost = (postId) => (dispatch) => {
+  dispatch(setPostLoading);
+  axios
+    .get(`/api/posts/${postId}`)
+    .then((res) =>
+      dispatch({
+        type: GET_POST,
+        payload: res.data,
+      })
+    )
+    .catch((err) =>
+      dispatch({
+        type: GET_POST,
         payload: null,
       })
     );
