@@ -11,7 +11,7 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 // connect DataBase
-// connectDB();
+connectDB();
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -28,8 +28,6 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
 // server static assets if in production
-console.log(process.env.NODE_ENV === 'production');
-
 if (process.env.NODE_ENV === 'production') {
   // set static folder
   app.use(express.static('client/build'));
