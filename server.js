@@ -11,7 +11,7 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 // connect DataBase
-connectDB();
+// connectDB();
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
