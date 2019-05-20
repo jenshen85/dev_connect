@@ -34,6 +34,7 @@ const postReduser = (state = initialState, action) => {
       return {
         ...state,
         posts: state.posts.filter((post) => post._id !== action.payload),
+        loading: false,
       };
     default:
       return state;

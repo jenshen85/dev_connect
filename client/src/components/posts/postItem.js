@@ -58,7 +58,7 @@ class PostItem extends Component {
               className="btn btn-light mr-1">
               <i className="text-secondary fas fa-thumbs-down" />
             </button>
-            <Link to={`/post/${post._id}`} className="btn btn-danger mr-1">
+            <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
               Comments
             </Link>
             {post.user === auth.user.id ? (
